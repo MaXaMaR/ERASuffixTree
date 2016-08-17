@@ -4,9 +4,7 @@ project(SuffixTree)
 include_directories(/opt/local/include)
 link_directories(/opt/local/lib)
 
-set(CMAKE_CXX_COMPILER /opt/local/libexec/ccache/clang++)
-
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -stdlib=libc++ -m64 -g")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -stdlib=libc++ -O3 -m64 -g")
 
 file(GLOB_RECURSE SOURCE_FILES *.cpp *.hpp)
 
@@ -19,7 +17,7 @@ find_package(Boost 1.59.0 COMPONENTS date_time filesystem system thread serializ
 include_directories(${Boost_INCLUDE_DIRS})
 link_directories(${Boost_LIBRARY_DIR})
 
-set(LIBS ${LIBS} ${OpenCV_LIBS} ${Boost_LIBRARIES})
+set(LIBS ${LIBS} ${Boost_LIBRARIES})
 
 add_executable(SuffixTree ${SOURCE_FILES})
 
